@@ -1,0 +1,17 @@
+<main>
+  <div class="bg-white w-screen h-screen">
+    <div class="max-w-2x2 py-16 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
+      <h1 class="text-lg font-sans text-gray-600">Alumnos</h1>
+      <div
+        class="mt-6 grid grid-cols-1 gap-y-10 gap-x-4 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8"
+      >
+        <app-alumno-card
+          *ngFor="let alumno of alumnos"
+          nombre="{{ alumno.nombre | titlecase }}"
+          nota="{{ alumno.nota }}"
+        ></app-alumno-card>
+      </div>
+    </div>
+    <p class="text-gray-400 font-light p-4 px-8 text-xs">*Se aprueba con 7.</p>
+  </div>
+</main>

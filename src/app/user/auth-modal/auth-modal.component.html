@@ -1,0 +1,103 @@
+<app-modal modalID="auth">
+  <p class="text-2xl font-bold" heading>Tu cuenta</p>
+
+  <app-tabs-container>
+    <app-tab tabTitle="Iniciar sesión">
+      <!-- Login Form -->
+      <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Email</label>
+          <input type="email" formControlName="email" required
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100
+              focus:border-indigo-400"
+            placeholder="Ingresar Email" />
+          <span class="text-red-500" *ngIf="this.formLogin.get('email')?.errors?.['required']">Ingrese su dirección de email.</span>
+        </div>
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Contraseña</label>
+          <input type="password" formControlName="password" required
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+            duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
+            placeholder="Contraseña" />
+          <span class="text-red-500" *ngIf="this.formLogin.get('password')?.errors?.['required']">Ingrese la contraseña.</span>
+        </div>
+        <button type="submit"
+          class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition
+            hover:bg-indigo-500">
+          Iniciar sesión
+        </button>
+      </form>
+    </app-tab>
+    <app-tab tabTitle="Registrarse">
+      <!-- Registration Form -->
+      <form [formGroup]="formRegister" (ngSubmit)="submitRegister">
+        <!-- Name -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Nombre</label>
+          <input type="text" formControlName="name" minlength="3" required
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
+            placeholder="Ingresar nombre" />
+          <span class="text-red-500" *ngIf="this.formRegister.get('name')?.errors?.['required']">Ingrese su nombre.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('name')?.errors?.['minlength']">El nombre contener al menos 3 caracteres.</span>
+        </div>
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Email</label>
+          <input type="email" formControlName="email" minlength="5" required
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
+            placeholder="Ingresar Email" />
+          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['required']">Ingrese su dirección de email.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['minlength']">La dirección debe contener al menos 5 caracteres.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['email']">Ingrese su dirección correctamente.</span>
+        </div>
+        <!-- Age -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Edad</label>
+          <input type="number" formControlName="age" maxlength="3"
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400" />
+          <span class="text-red-500" *ngIf="this.formRegister.get('age')?.errors?.['maxlength']">La edad debe contener como máximo 3 dígitos.</span>
+        </div>
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Contraseña</label>
+          <input type="password" formControlName="password" minlength="4" required
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
+            placeholder="Contraseña" />
+          <span class="text-red-500" *ngIf="this.formRegister.get('password')?.errors?.['required']">Ingrese la contraseña.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('password')?.errors?.['minlength']">La contraseña debe contener al menos 4 caracteres.</span>
+        </div>
+        <!-- Confirm Password -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Confirmar contraseña</label>
+          <input type="password" formControlName="confirmPassword" minlength="4" required
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
+            placeholder="Confirmar contraseña" />
+            <span class="text-red-500" *ngIf="this.formRegister.get('confirmPassword')?.errors?.['required']">Ingrese la contraseña.</span>
+            <span class="text-red-500" *ngIf="this.formRegister.get('confirmPassword')?.errors?.['minlength']">La contraseña debe contener al menos 4 caracteres.</span>
+        </div>
+        <!-- Phone Number -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Número de teléfono</label>
+          <input type="text" formControlName="cel" minlength="5"
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
+              duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
+            placeholder="Ingresar número de teléfono" />
+            <span class="text-red-500" *ngIf="this.formRegister.get('cel')?.errors?.['minlength']">El número debe contener al menos 5 dígitos.</span>
+        </div>
+        <button type="submit"
+          class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition
+            hover:bg-indigo-500 disabled:opacity-50">
+          Registrarse
+        </button>
+      </form>
+    </app-tab>
+  </app-tabs-container>
+</app-modal>

@@ -1,0 +1,16 @@
+<div class="max-w-sm w-full lg:max-w-full pr-8">
+  <div
+    [ngClass]="nota > 6 ? 'bg-green-200' : 'bg-red-200'"
+    class="border-r border-b border-l border-y border-gray-400 lg:border-l-0 lg:border-t rounded lg:border-gray-400 p-4 flex flex-col justify-between leading-normal"
+  >
+    <div class="mb-8 w-12">
+      <p class="text-sm text-gray-600 flex items-center">Alumno</p>
+    </div>
+    <div class="flex items-center">
+      <div class="text-sm">
+        <p class="text-gray-900 leading-none">{{ nombre }}</p>
+        <p class="text-gray-600">Nota: {{ nota }}</p>
+      </div>
+    </div>
+  </div>
+</div>
