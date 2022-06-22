@@ -13,18 +13,18 @@ export class AuthModalComponent implements OnInit, OnDestroy {
   constructor(public modal: ModalService, private fb: FormBuilder) { }
 
   formLogin = this.fb.group({
-    email: [''],
-    password: ['']
-  })
+    email: ['', [Validators.required]],
+    password: ['', [Validators.required]]
+  }, {updateOn: 'blur'})
 
   formRegister = this.fb.group({
-    name: [''],
-    email: ['', Validators.email],
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'), Validators.required]],
     age: [],
     password: [''],
     confirmPassword: [''],
     cel: []
-  })
+  }, {updateOn: 'blur'})
 
   ngOnInit(): void {
     this.modal.register('auth')
@@ -35,11 +35,9 @@ export class AuthModalComponent implements OnInit, OnDestroy {
   }
 
   submitLogin() {
-
   }
 
   submitRegister() {
-
   }
 
 }

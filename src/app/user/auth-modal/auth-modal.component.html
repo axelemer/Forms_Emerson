@@ -8,21 +8,21 @@
         <!-- Email -->
         <div class="mb-3">
           <label class="inline-block mb-2">Email</label>
-          <input type="email" formControlName="email" required
+          <input type="email" formControlName="email"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100
               focus:border-indigo-400"
             placeholder="Ingresar Email" />
-          <span class="text-red-500" *ngIf="this.formLogin.get('email')?.errors?.['required']">Ingrese su dirección de email.</span>
+          <span class="text-red-500" *ngIf="this.formLogin.get('email')?.errors?.['required'] && this.formLogin.get('email')?.touched">Ingrese su dirección de email.</span>
         </div>
         <!-- Password -->
         <div class="mb-3">
           <label class="inline-block mb-2">Contraseña</label>
-          <input type="password" formControlName="password" required
+          <input type="password" formControlName="password"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
             duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
             placeholder="Contraseña" />
-          <span class="text-red-500" *ngIf="this.formLogin.get('password')?.errors?.['required']">Ingrese la contraseña.</span>
+          <span class="text-red-500" *ngIf="this.formLogin.get('password')?.errors?.['required'] && this.formLogin.get('password')?.touched">Ingrese la contraseña.</span>
         </div>
         <button type="submit"
           class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition
@@ -33,35 +33,35 @@
     </app-tab>
     <app-tab tabTitle="Registrarse">
       <!-- Registration Form -->
-      <form [formGroup]="formRegister" (ngSubmit)="submitRegister">
+      <form [formGroup]="formRegister" (ngSubmit)="submitRegister()">
         <!-- Name -->
         <div class="mb-3">
           <label class="inline-block mb-2">Nombre</label>
-          <input type="text" formControlName="name" minlength="3" required
+          <input type="text" formControlName="name" id="name"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
             placeholder="Ingresar nombre" />
-          <span class="text-red-500" *ngIf="this.formRegister.get('name')?.errors?.['required']">Ingrese su nombre.</span>
-          <span class="text-red-500" *ngIf="this.formRegister.get('name')?.errors?.['minlength']">El nombre contener al menos 3 caracteres.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('name')?.errors?.['required'] && this.formRegister.get('name')?.touched">Ingrese su nombre.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('name')?.errors?.['minlength'] && this.formRegister.get('name')?.touched">El nombre contener al menos 3 caracteres.</span>
         </div>
         <!-- Email -->
         <div class="mb-3">
           <label class="inline-block mb-2">Email</label>
-          <input type="email" formControlName="email" minlength="5" required
+          <input type="email" formControlName="email"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
             placeholder="Ingresar Email" />
-          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['required']">Ingrese su dirección de email.</span>
-          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['minlength']">La dirección debe contener al menos 5 caracteres.</span>
-          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['email']">Ingrese su dirección correctamente.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['required'] && this.formRegister.get('email')?.touched">Ingrese su dirección de email.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('email')?.errors?.['pattern'] && this.formRegister.get('email')?.touched">Ingrese su dirección correctamente.</span>
         </div>
         <!-- Age -->
         <div class="mb-3">
           <label class="inline-block mb-2">Edad</label>
-          <input type="number" formControlName="age" maxlength="3"
+          <input type="number" formControlName="age" maxlength="3" max="130"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400" />
-          <span class="text-red-500" *ngIf="this.formRegister.get('age')?.errors?.['maxlength']">La edad debe contener como máximo 3 dígitos.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('age')?.errors?.['maxlength'] && this.formRegister.get('age')?.touched">La edad debe contener como máximo 3 dígitos.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('age')?.errors?.['max'] && this.formRegister.get('age')?.touched">Introduzca una edad correcta.</span>
         </div>
         <!-- Password -->
         <div class="mb-3">
@@ -70,8 +70,8 @@
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
             placeholder="Contraseña" />
-          <span class="text-red-500" *ngIf="this.formRegister.get('password')?.errors?.['required']">Ingrese la contraseña.</span>
-          <span class="text-red-500" *ngIf="this.formRegister.get('password')?.errors?.['minlength']">La contraseña debe contener al menos 4 caracteres.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('password')?.errors?.['required'] && this.formRegister.get('password')?.touched">Ingrese la contraseña.</span>
+          <span class="text-red-500" *ngIf="this.formRegister.get('password')?.errors?.['minlength'] && this.formRegister.get('password')?.touched">La contraseña debe contener al menos 4 caracteres.</span>
         </div>
         <!-- Confirm Password -->
         <div class="mb-3">
@@ -80,8 +80,8 @@
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
             placeholder="Confirmar contraseña" />
-            <span class="text-red-500" *ngIf="this.formRegister.get('confirmPassword')?.errors?.['required']">Ingrese la contraseña.</span>
-            <span class="text-red-500" *ngIf="this.formRegister.get('confirmPassword')?.errors?.['minlength']">La contraseña debe contener al menos 4 caracteres.</span>
+            <span class="text-red-500" *ngIf="this.formRegister.get('confirmPassword')?.errors?.['required'] && this.formRegister.get('confirmPassword')?.touched">Ingrese la contraseña.</span>
+            <span class="text-red-500" *ngIf="this.formRegister.get('confirmPassword')?.errors?.['minlength'] && this.formRegister.get('confirmPassword')?.touched">La contraseña debe contener al menos 4 caracteres.</span>
         </div>
         <!-- Phone Number -->
         <div class="mb-3">
@@ -90,7 +90,7 @@
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-400 transition
               duration-500 focus:outline-none rounded bg-gray-100 focus:border-indigo-400"
             placeholder="Ingresar número de teléfono" />
-            <span class="text-red-500" *ngIf="this.formRegister.get('cel')?.errors?.['minlength']">El número debe contener al menos 5 dígitos.</span>
+            <span class="text-red-500" *ngIf="this.formRegister.get('cel')?.errors?.['minlength'] && this.formRegister.get('cel')?.touched">El número debe contener al menos 5 dígitos.</span>
         </div>
         <button type="submit"
           class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition
